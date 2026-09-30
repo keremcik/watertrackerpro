@@ -2,227 +2,158 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DubFlow | Test Süreci</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Water Tracker Pro Test Ekibi</title>
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --accent-purple: #a855f7;
-            --accent-blue: #6366f1;
-            --text-main: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.6);
-            --btn-grad-start: #1957df;
-            --btn-grad-end: #7c14b8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+            --bg: #0f172a;
+            --card: #1e293b;
+            --primary: #38bdf8; /* Su teması için açık mavi */
+            --secondary: #3b82f6; /* Koyu mavi */
+            --text: #f8fafc;
         }
 
         body {
-            background: #050505;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.25) 0px, transparent 50%), 
-                radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.2) 0px, transparent 50%);
-            background-attachment: fixed;
-            color: var(--text-main);
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
             display: flex;
+            align-items: center;
             justify-content: center;
-            padding: 30px 20px;
+            min-height: 100vh;
         }
 
         .container {
-            max-width: 460px;
-            width: 100%;
-            background: var(--glass-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid var(--glass-border);
-            border-radius: 40px;
-            padding: 35px 20px;
+            width: 90%;
+            max-width: 450px;
+            background: var(--card);
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
 
-        .top-info {
-            background: rgba(168, 85, 247, 0.12);
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            color: #d8b4fe;
-            padding: 16px;
-            border-radius: 22px;
-            font-size: 14px;
-            line-height: 1.5;
+        .logo-area img {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            object-fit: cover;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: #94a3b8;
+            line-height: 1.6;
             margin-bottom: 30px;
-            text-align: left;
-            animation: fadeIn 0.8s ease-out;
         }
 
-        .app-logo { width: 85px; height: 85px; border-radius: 22px; margin-bottom: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-        h1 { font-size: 34px; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 5px; }
-        .subtitle { color: var(--text-dim); margin-bottom: 35px; font-size: 14px; letter-spacing: 0.5px; }
+        .step-card {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 15px;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            text-align: left;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.2s;
+        }
 
-        .content-flow { text-align: left; }
-        .step-box { margin-bottom: 45px; }
-        
-        .step-header { display: flex; align-items: center; margin-bottom: 15px; }
-        .step-number { 
-            background: rgba(168, 85, 247, 0.2); width: 26px; height: 26px; 
-            border-radius: 50%; display: flex; align-items: center; 
-            justify-content: center; margin-right: 12px; color: #d8b4fe;
-            font-weight: bold; font-size: 13px;
+        .step-card:active {
+            transform: scale(0.98);
+        }
+
+        .step-num {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .step-title {
+            display: block;
+            font-weight: 600;
+            margin: 5px 0 12px 0;
         }
 
         .btn {
-            display: flex; align-items: center; justify-content: center;
-            padding: 18px; border-radius: 20px; text-decoration: none;
-            font-weight: 700; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            border: none; margin-bottom: 18px;
-        }
-
-        .btn-primary { background: #ffffff; color: #000; }
-        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(255, 255, 255, 0.4); }
-
-        .btn-gradient { background: linear-gradient(135deg, var(--btn-grad-start), var(--btn-grad-end)); color: #fff; }
-        .btn-gradient:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(124, 20, 184, 0.6); }
-
-        .btn-logo { width: 26px; height: 26px; border-radius: 6px; margin-right: 12px; object-fit: cover; }
-
-        .preview-img {
-            width: 100%; border-radius: 18px; margin: 10px 0;
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .instruction-text { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; display: block; }
-        .step-description { font-size: 13.5px; color: var(--text-dim); margin-top: 8px; line-height: 1.5; }
-        
-        .feedback-section {
-            margin-top: 40px;
-            padding: 24px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 28px;
-            border: 1px dashed rgba(168, 85, 247, 0.4);
-        }
-        .feedback-msg { color: #fff; font-size: 16px; font-weight: 600; margin-bottom: 8px; display: block; }
-        .dm-note { color: #d8b4fe; font-size: 14px; font-weight: 500; display: block; margin-bottom: 15px; }
-
-        /* Instagram Butonları Stili */
-        .social-row {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 10px;
-        }
-        .social-btn {
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.06);
-            padding: 10px 15px;
-            border-radius: 15px;
+            display: block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #0f172a;
             text-decoration: none;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.3s;
-        }
-        .social-btn:hover {
-            background: rgba(168, 85, 247, 0.2);
-            border-color: var(--accent-purple);
-            transform: translateY(-2px);
-        }
-        .insta-svg {
-            width: 18px;
-            height: 18px;
-            margin-right: 8px;
-            stroke: #d8b4fe;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-align: center;
+            font-size: 0.95rem;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .warning-box {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(234, 179, 8, 0.1);
+            border-radius: 12px;
+            border: 1px dashed #eab308;
+            color: #fde047;
+            font-size: 0.85rem;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.75rem;
+            color: #64748b;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="top-info">
-            💜 <b>Küçük bir not:</b> Uygulama şu anlık biraz yavaş dublaj yapıyor olabilir. Play Store'da tam yayına geçtiğimizde çok daha güçlü bir VPS'e taşınacağız ve her şey ışık hızında olacak! Sabrınız için teşekkürler.
-        </div>
-
-        <img src="Başlıksız82_20260408222853.jpg" alt="Logo" class="app-logo">
-        <h1>DubFlow</h1>
-        <p class="subtitle">BETA TEST KATILIM REHBERİ</p>
-
-        <div class="content-flow">
-            <div class="step-box">
-                <div class="step-header">
-                    <div class="step-number">1</div>
-                    <h3>Google Grubuna Katılın</h3>
-                </div>
-                
-                <a href="https://groups.google.com/g/dubflow-test-ekibi" target="_blank" class="btn btn-primary">
-                    1. Gruba Katıl
-                </a>
-
-                <span class="instruction-text">➜ Açılan sayfada mavi butona tıklayın:</span>
-                <img src="katil.jpg" alt="Grup Katılım" class="preview-img">
-                <p class="step-description">Uygulamanın Play Store'da görünmesi için bu gruba üye olman gerekiyor.</p>
-            </div>
-
-            <div class="step-box">
-                <div class="step-header">
-                    <div class="step-number">2</div>
-                    <h3>Testi Onaylayın</h3>
-                </div>
-
-                <a href="https://play.google.com/apps/testing/com.dubflow.ai.app" target="_blank" class="btn btn-gradient">
-                    <img src="Başlıksız82_20260408222853.jpg" class="btn-logo" alt="Logo">
-                    2. Testi Onayla ve İndir
-                </a>
-
-                <span class="instruction-text">➜ "Become a tester" diyerek onay verin:</span>
-                <img src="tester.jpg" alt="Tester Onay" class="preview-img">
-                
-                <p class="step-description">Onay sonrası "download it on Google Play" diyerek mağazaya uçabilirsin!</p>
-                <img src="dow.jpg" alt="Download Link" class="preview-img" style="opacity:0.7;">
-            </div>
-
-            <div class="step-box" style="margin-bottom: 0;">
-                <div class="step-header">
-                    <div class="step-number">3</div>
-                    <h3>Yükle ve Başla</h3>
-                </div>
-                <img src="play.jpg" alt="Play Store" class="preview-img">
-                <p class="step-description">DubFlow dünyasına hoş geldin! Yükle butonuna basman yeterli.</p>
-            </div>
-        </div>
-
-        <div class="feedback-section">
-            <span class="feedback-msg">Hata mı buldun ya da bir önerin mi var? 🙏</span>
-            <span class="dm-note">Lütfen çekinmeden <b>DM'den yazabilirsin!</b> ✨</span>
-            
-            <div class="social-row">
-                <a href="https://www.instagram.com/kerem_yeee" target="_blank" class="social-btn">
-                    <svg class="insta-svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    @kerem_yeee
-                </a>
-                <a href="https://www.instagram.com/dubflowm" target="_blank" class="social-btn">
-                    <svg class="insta-svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    @dubflowm
-                </a>
-            </div>
-        </div>
-
-        <footer style="margin-top: 25px; opacity: 0.5; font-size: 12px;">
-            DubFlow Geliştirici Ekibi © 2026
-        </footer>
+<div class="container">
+    <div class="logo-area">
+        <!-- Logo görseli buraya eklendi -->
+        <img src="1000039171 (1).jpg" alt="Water Tracker Pro">
     </div>
+    <h1>Water Tracker Pro</h1>
+    <p>Düzenli su içmeyi alışkanlık haline getir! Uygulamamızı test ederek geliştirme sürecimize destek ol.</p>
+
+    <div class="step-card">
+        <span class="step-num">Adım 1</span>
+        <span class="step-title">Google Grubuna Katıl</span>
+        <!-- Yeni oluşturduğun Google Gruplar linki -->
+        <a href="https://groups.google.com/g/watertrackerpro" target="_blank" class="btn">Gruba Katıl</a>
+    </div>
+
+    <div class="step-card" style="border-left-color: var(--secondary);">
+        <span class="step-num">Adım 2</span>
+        <span class="step-title">Testi Onayla (Web Linki)</span>
+        <!-- DİKKAT: Play Console'dan aldığın Web Katılım Linkini aşağıya yapıştır -->
+        <a href="BURAYA_WEB_TEST_LINKINI_YAPISTIR" target="_blank" class="btn">Testi Etkinleştir</a>
+    </div>
+
+    <div class="step-card" style="border-left-color: #60a5fa;">
+        <span class="step-num">Adım 3</span>
+        <span class="step-title">Uygulamayı İndir</span>
+        <!-- DİKKAT: Play Console'dan aldığın Android Linkini aşağıya yapıştır -->
+        <a href="BURAYA_ANDROID_LINKINI_YAPISTIR" target="_blank" class="btn">Play Store'dan İndir</a>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ ÖNEMLİ:</strong> Google kuralları gereği uygulamayı 14 gün boyunca cihazınızda tutmanız ve ara sıra açıp test etmeniz gerekmektedir.
+    </div>
+
+    <div class="footer">
+        © 2026 Krmg Studio - Düzce'den Sevgilerle
+    </div>
+</div>
 
 </body>
 </html>
