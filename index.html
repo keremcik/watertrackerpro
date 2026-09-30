@@ -3,158 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Water Tracker Pro Test Ekibi</title>
+    <title>Water Tracker Pro Beta Test</title>
     <style>
-        :root {
-            --bg: #0f172a;
-            --card: #1e293b;
-            --primary: #22d3ee;
-            --secondary: #818cf8;
-            --text: #f8fafc;
-        }
-
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e1b4b); /* Hafif lacivert-mor degrade arka plan */
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .container {
-            width: 90%;
-            max-width: 450px;
-            background: var(--card);
-            padding: 30px;
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 480px;
+            /* Apple Liquid Glass (Cam) Efekti */
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            padding: 40px 24px;
             text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
-        .logo-area {
-            margin-bottom: 15px;
-        }
-        
-        /* Yeni resim için eklenen stil */
-        .logo-area img {
-            width: 80px;
-            height: 80px;
-            border-radius: 20px;
+        .app-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 24px;
             object-fit: cover;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 20px auto;
+            background-color: transparent;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         h1 {
-            font-size: 1.8rem;
-            margin: 0 0 10px 0;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            font-size: 28px;
+            font-weight: 800;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.5px;
+            background: linear-gradient(180deg, #ffffff, #a1a1aa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        p {
+        .subtitle {
             color: #94a3b8;
-            line-height: 1.6;
-            margin-bottom: 30px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 45px;
+            font-weight: 600;
         }
 
-        .step-card {
-            background: rgba(15, 23, 42, 0.5);
-            padding: 15px;
-            border-radius: 16px;
-            margin-bottom: 15px;
+        .step-container {
             text-align: left;
-            border-left: 4px solid var(--primary);
-            transition: transform 0.2s;
+            margin-bottom: 35px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .step-card:active {
-            transform: scale(0.98);
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
         }
 
         .step-num {
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6); /* Canlı mavi gradient */
+            color: #ffffff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            margin-right: 12px;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
         }
 
         .step-title {
-            display: block;
+            font-size: 18px;
             font-weight: 600;
-            margin: 5px 0 12px 0;
+            color: #e2e8f0;
         }
 
-        .btn {
+        .btn-primary {
             display: block;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: rgba(255, 255, 255, 0.95);
             color: #0f172a;
             text-decoration: none;
-            padding: 12px;
-            border-radius: 12px;
+            padding: 16px;
+            border-radius: 16px;
             font-weight: 700;
+            font-size: 16px;
             text-align: center;
-            font-size: 0.95rem;
+            transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .warning-box {
-            margin-top: 25px;
-            padding: 15px;
-            background: rgba(234, 179, 8, 0.1);
+        .btn-primary:active {
+            transform: scale(0.96);
+            background: #ffffff;
+        }
+
+        .sub-info {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-top: 0;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .guide-img {
+            width: 100%;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: block;
+            margin-top: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            opacity: 0.9;
+        }
+
+        .feedback-section {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .feedback-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+            color: #e2e8f0;
+        }
+        
+        .feedback-text {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 24px;
             border-radius: 12px;
-            border: 1px dashed #eab308;
-            color: #fde047;
-            font-size: 0.85rem;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background 0.2s;
         }
 
-        .footer {
-            margin-top: 20px;
-            font-size: 0.75rem;
-            color: #64748b;
+        .btn-secondary:active {
+            background: rgba(255, 255, 255, 0.15);
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="logo-area">
-        <!-- 🎙️ emojisi yerine senin Water Tracker görselin eklendi -->
-        <img src="1000039171 (1).jpg" alt="Water Tracker Pro">
-    </div>
+    <img src="1000039171 (1).jpg" alt="Water Tracker Pro" class="app-logo">
+
     <h1>Water Tracker Pro</h1>
-    <p>Düzenli su içmeyi alışkanlık haline getir! Test ekibimize katılarak bize destek ol!</p>
+    <div class="subtitle">BETA TEST KATILIM REHBERİ</div>
 
-    <div class="step-card">
-        <span class="step-num">Adım 1</span>
-        <span class="step-title">Google Grubuna Katıl</span>
-        <!-- Water Tracker Pro grup linki eklendi -->
-        <a href="https://groups.google.com/g/watertrackerpro" target="_blank" class="btn">Gruba Katıl</a>
+    <div class="step-container">
+        <div class="step-header">
+            <div class="step-num">1</div>
+            <div class="step-title">Google Grubuna Katılın</div>
+        </div>
+        <a href="https://groups.google.com/g/watertrackerpro" target="_blank" class="btn-primary">1. Gruba Katıl</a>
+        <p class="sub-info">➜ Açılan sayfada mavi butona tıklayın:</p>
+        <img src="katil.jpg" alt="Gruba Katıl Rehber" class="guide-img">
     </div>
 
-    <div class="step-card" style="border-left-color: var(--secondary);">
-        <span class="step-num">Adım 2</span>
-        <span class="step-title">Testi Onayla (Web Linki)</span>
-        <a href="BURAYA_WEB_TEST_LINKINI_YAPISTIR" target="_blank" class="btn">Testi Etkinleştir</a>
+    <div class="step-container">
+        <div class="step-header">
+            <div class="step-num">2</div>
+            <div class="step-title">Test Programını Onaylayın</div>
+        </div>
+        <!-- Linki buraya yapıştıracaksın -->
+        <a href="BURAYA_WEB_TEST_LINKINI_YAPISTIR" target="_blank" class="btn-primary">2. Testi Onayla (Web)</a>
+        <p class="sub-info">➜ Açılan sayfada sağ alt köşedeki mavi onaya basın:</p>
+        <img src="dow.jpg" alt="Testi Onayla Rehber" class="guide-img">
     </div>
 
-    <div class="step-card" style="border-left-color: #f472b6;">
-        <span class="step-num">Adım 3</span>
-        <span class="step-title">Uygulamayı İndir</span>
-        <a href="BURAYA_ANDROID_LINKINI_YAPISTIR" target="_blank" class="btn">Play Store'dan İndir</a>
+    <div class="step-container">
+        <div class="step-header">
+            <div class="step-num">3</div>
+            <div class="step-title">Uygulamayı İndirin</div>
+        </div>
+        <!-- Linki buraya yapıştıracaksın -->
+        <a href="BURAYA_ANDROID_LINKINI_YAPISTIR" target="_blank" class="btn-primary">3. Play Store'dan İndir</a>
+        <p class="sub-info">➜ Uygulamayı indirin. Test kuralları gereği lütfen 14 gün silmeyin:</p>
+        <img src="play.jpg" alt="Play Store Rehber" class="guide-img">
     </div>
 
-    <div class="warning-box">
-        <strong>⚠️ ÖNEMLİ:</strong> Google kuralları gereği uygulamayı 14 gün boyunca telefonunuzda tutmanız ve ara ara açmanız gerekmektedir.
+    <div class="feedback-section">
+        <h3 class="feedback-title">💡 Önerin veya şikayetin mi var?</h3>
+        <p class="feedback-text">Uygulamayı geliştirirken fikirlerine ihtiyacımız var! Her türlü hata bildirimi veya özellik önerisi için iletişime geçebilirsin.</p>
+        <a href="mailto:iletisim@krmgstudio.com" class="btn-secondary">Bize E-posta Gönder</a>
     </div>
 
-    <div class="footer">
-        © 2026 Krmg Studio - Düzce'den Sevgilerle
-    </div>
 </div>
 
 </body>
